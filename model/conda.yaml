@@ -1,0 +1,10 @@
+channels:
+- defaults
+dependencies:
+- python=3.8.3
+- pip
+- pip:
+  - mlflow
+  - torch==1.9.0
+  - sklearn==0.24.1
+name: torch_env
