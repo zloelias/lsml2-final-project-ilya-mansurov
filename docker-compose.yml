@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  model:
+    build: ./mlflow/
+    mem_limit: 4096m
+    mem_reservation: 1024m
+    volumes:
+      - "./model/:/app/model"
+    ports:
+      - "8080:8080"
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+
+  recommender:
+    build: ./recommender/
+    entrypoint: sh
+    command: /app/start.sh
+    volumes:
+      - "./data/:/app/data"
+    ports:
+      - "8081:8081"
+    environment:
+      - CELERY_BROKER=redis://redis:6379/0
+      - CELERY_BACKEND=redis://redis:6379/0
+    links:
+      - "model"
+      - "redis"
+      - "worker_1"
+
+  worker_1:
+    build: ./recommender/
+    hostname: worker_1
+    entrypoint: celery
+    command: -A worker worker --loglevel=info -E -Q worker
+    volumes:
+      - "./data/:/app/data"
+    environment:
+      - "C_FORCE_ROOT=true"
+    links:
+      - "redis"
+      - "model"
+    depends_on:
+      - "redis"
