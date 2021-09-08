@@ -2,15 +2,15 @@
 
 ## Dataset
 
-Dataset contains information about user ratings (like = 1 / dislike=-1) of movies and series at smotrim.ru.
-Dataset have been cleared of empty data, repeating votes, users and items with less than 3 votes.
-Вataset consists of 44387 ratings, 1995 items and 10,076 users. Classes can be considered as balanced
+Dataset contains information about user ratings (like = 1 / dislike=-1) of movies and series on Smotrim.ru video platform.
+Dataset have been cleared of empty ids, repeating votes, users and items with less than 3 votes.
+Dataset consists of 44387 ratings, 1995 items and 10,076 users. Classes can be considered as balanced
 
 [Dataset](./data/raw_ratings.csv)
 
 ## Task
 
-My objective is to develop recommendation service. Service will recommend top K items for particular user with highest predicted rating.
+My objective is to develop recommendation service. Service will recommend topK items for particular user with highest predicted rating.
 
 ## Model
 
