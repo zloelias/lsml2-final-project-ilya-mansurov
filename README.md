@@ -14,7 +14,7 @@ My objective is to develop recommendation service. Service will recommend top K 
 
 ## Model
 
-We will solve rating prediction as a binary classification problem. We will use MLP as a [model] (./MLP.py).
+We will solve rating prediction as a binary classification problem. We will use MLP as a [model] (./model.py).
 The model receives user and item identifiers as input, then embeddings are built for them.
 The vector from embeddings goes through 2 fully connected layers with RELU and dropout and sigmoid on the last layer.
 Thus, at the output, the model gives the probabilities of a positive class. BCEloss is used as the loss function,
@@ -22,11 +22,11 @@ and roc_auc_score is used as the metric.
 
 ## Trainig
 
-Model was trained with pytorch_lightning framework, the results of the experiments were stored with MLFlow.
+Model was [trained] (./train.ipynb) with pytorch_lightning framework, the results of the experiments were stored with MLFlow.
 The experiments were carried out with several options for hyperparameters - the number of fully connected layers,
 it's size, lerning rate.
 
 ## Service architecture
 
-Final model wrapped in a web service with MLFlow. Main service process requests in asynchronous manner with celery
+Final model wrapped in a web service with [MLFlow] (./mlflow). Main [service] (./recommender) process requests in asynchronous manner with celery
 framework with redis as backend storage and message broker.
