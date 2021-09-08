@@ -30,3 +30,5 @@ it's size, learning rate.
 
 Final model wrapped in a web service with [MLFlow] (./mlflow). Main [service] (./recommender) process requests in
 asynchronous manner with celery framework with redis as backend storage and message broker.
+To start service use `docker-compose up`. To set recomendation task `curl http://127.0.0.1:8081/count_recs_by_user/wKgcDlom3XR95yGlDpCGAg==
+` or any other user_id from dataset, and then `curl http://127.0.0.1:8081/get_recs/<task_id>`

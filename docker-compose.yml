@@ -34,7 +34,7 @@ services:
     build: ./recommender/
     hostname: worker_1
     entrypoint: celery
-    command: -A worker worker --loglevel=info -E -Q worker
+    command: -A recommender:celery_app worker --loglevel=info -E  -f celery.logs --loglevel=info
     volumes:
       - "./data/:/app/data"
     environment:
