@@ -24,9 +24,9 @@ and roc_auc_score is used as the metric.
 
 Model was [trained] (./train.ipynb) with pytorch_lightning framework, the results of the experiments were stored with MLFlow.
 The experiments were carried out with several options for hyperparameters - the number of fully connected layers,
-it's size, lerning rate.
+it's size, learning rate.
 
 ## Service architecture
 
-Final model wrapped in a web service with [MLFlow] (./mlflow). Main [service] (./recommender) process requests in asynchronous manner with celery
-framework with redis as backend storage and message broker.
+Final model wrapped in a web service with [MLFlow] (./mlflow). Main [service] (./recommender) process requests in
+asynchronous manner with celery framework with redis as backend storage and message broker.
