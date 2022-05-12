@@ -20,7 +20,7 @@ The vector from embeddings goes through 2 fully connected layers with RELU and d
 Thus, at the output, the model gives the probabilities of a positive class. BCEloss is used as the loss function,
 and roc_auc_score is used as the metric.
 
-## Trainig
+## Training
 
 Model was [trained] (./train.ipynb) with pytorch_lightning framework, the results of the experiments were stored with MLFlow.
 The experiments were carried out with several options for hyperparameters - the number of fully connected layers,
